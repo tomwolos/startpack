@@ -1,0 +1,295 @@
+### READ HELP ###
+Help on command/keys.
+:help cmd/CTRL-key
+:helpgrep substring
+
+### MODES ###
+normal (Esc, ctrl-[, commands)
+insert (i/a/A/c, edit text)
+command (:, line commands)
+visual (v, highlight text)
+regexp (/, regular expression)
+
+### TERMINAL ###
+Start terminal in a new window.
+:terminal
+
+### MOTIONS ###
+Can be acted upon by operators.
+
+Move N characters left/right or N lines down/up.
+[N]h/l/j/k
+
+Move to the first/first non-blank/last character in line (screen line).
+[g]0/^/$
+
+Count N-1/N lines on the first non-blank character (screen line).
+_/+
+
+Goto line N (default first/last).
+[N]gg/G
+
+Move to/before character N to the right or left in the current line.
+[N]f/t{char}
+[N]F/T{char}
+
+Move between matching pairs of brackets under cursor or go to the next closing bracket in line.
+%
+
+Move forward to the start or end of word/Word(blank-separated) N.
+[N]w/W
+[N]e/E
+
+Move backward to the start of word/Word(blank-separated) N.
+[N]b/B
+
+Move forward/backward N sentences (one/two spaces after full stop if flag J is unset/set in cpoptions), paragraphs, sections, or methods.
+[N])/(
+[N]}/{
+[N]]]/[[
+[N]]m/[m
+
+Move to high/middle/low position in window (N from top/bottom).
+[N]H
+M
+[N]L
+
+Move to older/newer position in jump list.
+ctrl-o/ctrl-i
+
+Mark current position or go to the line with/exact position of the mark.
+m{a-zA-Z}
+'/`{a-z} within buffer
+'/`{A-Z} between buffers
+
+### TEXT OBJECTS ###
+Acted upon by operators.
+
+Inner(excluding boundaries)/entire(including boundaries) words, Words, paragraphs, brackets, or tag blocks.'
+iw/aw
+iW/aW
+ip/ap
+ib/ab
+i()[]{}/a()[]{}
+it/at
+
+### OPERATORS ###
+Act upon text objects and motion.
+
+Repeat last operation.
+.
+
+Change/delete/yank(copy) the text moved over with {motion}.
+c/d/y{motion}
+
+Paste the text above/below (move the cursor after the pasted text if not end of line).
+[g]P/p
+
+Yank(copy)/paste using the register.
+"{reg}y{motion}/[g]P/p
+
+Execute content of the register as a command.
+@{reg}
+
+Insert the contents of file/standard output of command below (at if -1) the cursor.
+:[-1]r[ead] [file]
+:[-1]r[ead]! {command}
+
+Delete N characters under and after/before the cursor.
+[N]x/X
+
+Delete N lines and start editing from where the first non-blank character was.
+[N]S
+
+Delete/yank(copy) N lines.
+[N]dd/yy
+
+Replace character under cursor with {char}/enter replace mode.
+r{char}/R
+
+Indent/unindent single line/multiples lines.
+>>/<<
+>/<{motion}
+
+### EDITING ###
+Start editing text at/behind the cursor/end of line/new line above/new line below.
+i/a/A/O/o
+
+Enter x-mode.
+ctrl-x
+
+Completion from tags and scroll previous/next.
+ctrl-p/ctrl-n
+
+Completion (programming language).
+ctrl-x ctrl-o
+
+### BUFFERS ###
+File loaded into memory for editing.
+
+Switch to buffer.
+:b {name}
+
+Switch between buffers.
+ctrl-^
+
+Split window horizontally and switch to buffer (default current).
+:sb {name}
+
+Switch to previous/next/first/last buffer.
+:bp/bn/bf/bl
+
+Delete/wipe buffer.
+:bd/bw {name}
+
+Execute command in each buffer (or range of buffers), can contain | to concatenate commands.
+:[range]bufdo[!] {cmd}
+
+Edit file.
+:e {file}
+
+Reload current file.
+:e
+
+Edit new file using unnamed buffer.
+:enew
+
+Find file and edit it.
+:find {file}
+
+Write to the current file/a new file/overwrite existing file.
+:w[rite]
+:w[rite] {file}
+:w[rite]! {file}
+
+### WINDOWS ###
+Viewport on buffer.
+ctrl-w in normal mode is equivalent to :wincmd in command mode.
+
+commands:
+Enter normal mode from terminal
+ctrl-w N
+
+Split window horizontally/vertically with N rows/columns (viewports on the same file or on old and new/existing file).
+
+:[N]sp [file]
+:[N]new [file]
+
+:[N]vs [file]
+:[N]vnew [file]
+
+:[N]sf {file}
+
+Use vertical window splitting for the given command.
+:vert {cmd}
+
+New window position to be above (horizontal split) or left (vertical split).
+:abo {cmd}
+
+New window position to be below (horizontal split) or right (vertical split).
+:bel {cmd}
+
+New window position and size to be top/bottom (horizontal split) and full width or left/right (vertical split) and full height.
+:to {cmd}
+:bo {cmd}
+
+Quit the current or given window.
+:q[!]
+
+Make the current or given window the only one visible (closes other windows).
+:only[!]
+
+Move between windows (to the down/up/left/right/next).
+ctrl-w j/k/h/l/w
+
+Rotate between windows.
+ctrl-w r/R
+
+Exchange current and next windows.
+ctrl-w x
+
+Make all windows equally high and wide.
+ctrl-w =
+
+Resize the window to given size (default if N empty).
+[:vert] :res N
+[:vert] :res -N/+N
+
+Change window layout, move current window to far left (H), far right (L), very top (K), or very bottom (J).
+ctrl-w H/J/K/L
+
+Execute command in each window (or range of windows), can contain | to concatenate commands.
+:[range]windo {cmd}
+
+### REGEXP ###
+The general expression is:
+:[range] regexp flags
+
+Range.
+% - all lines
+a,b - lines between a and b inclusive
+.,$ - lines between current through last
+.,-/+N - lines between current through the previous/next N
+
+Regexp.
+/pattern/ - match pattern using regular expression
+s/old/new/ - replace old with new
+g/pattern/cmd - execute cmd to all lines matching pattern
+
+Flags.
+g - match all occurences of pattern in line (first occurence if not used)
+
+Search forward/backward.
+/pattern
+?pattern
+
+Place cursor at the end of match.
+/pattern\zs
+
+Find next/previous occurence.
+n/N
+
+Search forward/backward for next/previous occurence of the word nearest the cursor.
+*/#
+
+### MACROS ###
+Start macro.
+q{a-z}
+
+Stop macro.
+q
+
+Play macro.
+@q{a-z}
+
+Replay last macro.
+@@
+
+### TABS ###
+Collection of windows.
+
+Open new tab with new or existing file.
+:tabe [name]
+:tabf {name}
+
+Close current tab or all other tabs.
+:tabc[!]
+:tabo[!]
+
+Switch to another tab.
+:tabn/<C-PageDown>/gt in normal mode
+:tabp/<C-PageUp>/gT in normal mode
+
+### VARIOUS ###
+Undo last change.
+u
+
+Undo last undo.
+ctrl-r
+
+Redraw window with the current line at the top/middle/bottom of window.
+zt/zz/zb
+
+Scroll screen up/down without moving the cursor.
+ctrl-e/y
+

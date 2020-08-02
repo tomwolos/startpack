@@ -1,0 +1,68 @@
+### TMUX ###
+Create new window.
+ctrl-b c
+
+% custom %
+Switch between windows.
+F1
+
+Window tree.
+F4
+
+
+### TERMINAL ###
+Stop process running in the foreground.
+ctrl-c
+
+Send process to background.
+ctrl-z
+
+Log out of the current terminal.
+ctrl-d
+
+Clear screen.
+ctrl-l
+
+Move cursor to the start/end of line.
+ctrl-a/ctrl-e
+
+Delete text from the start of line to the cursor/from the cursor to the end of line.
+ctrl-u/ctrl-k
+
+Paste deleted text.
+ctrl-y
+
+Paste previous/next command.
+ctrl-p/ctrl-n
+
+Search command history.
+ctrl-r
+
+
+### MANAGE SOFTWARE ###
+Check package versions.
+aptitude versions pkgname
+
+Install package and hold/unhold it (update/no update).
+aptitude install pkgname
+sudo apt-mark hold/unhold pkgname
+
+
+### MIDNIGHT COMMANDER ###
+Autocompletion.
+esc tab
+
+Toggle fullscreen console.
+ctrl-o
+
+Paste filenames/full filenames to shell.
+ctrl-enter/ctrl-shift-enter
+
+Show current directory in the other panel.
+alt-i
+
+Switch layout left/right to top/bottom.
+alt-,
+
+Swap panels.
+ctrl-u

@@ -1,0 +1,17 @@
+# create repository inside a directory
+git init
+
+# add file to the repository
+git add {file}
+
+# commit changes
+git commit -m "commit message"
+
+# push changes to remote repository (default name is origin, branch is master)
+git push -u {name} {branch}
+
+# list change log
+git log
+
+# clone a remote repository to the current directory
+git clone {remote}
