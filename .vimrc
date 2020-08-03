@@ -3,6 +3,8 @@ set nocompatible
 " Display line numbers relative to the current line
 set number
 set relativenumber
+" Set large number of commands to remember for convenient search
+set history=1000
 " Disable automatic breaking of long lines in buffers
 set textwidth=0
 set wrapmargin=0
@@ -55,9 +57,13 @@ tnoremap <F2> <C-W>w
 inoremap <F3> <Esc><C-PageDown>
 nnoremap <F3> <C-PageDown>
 tnoremap <F3> <C-W>:tabn<CR>
-" Map keys to copy range from/to clipboard
-nnoremap <C-C> :sp ++bin clipboard<CR>:set noeol<CR>P<bar>:w !xclip -selection clipboard<CR><CR>:set eol<CR>:q!<CR>
-nnoremap <C-V> :sp clipboard<CR>:1r !xclip -o<CR>gg<bar>j<bar>y/\%$<CR>:q!<CR>P
+" Map ctrl-p/n to find matching commands in history (breaks wildmenu, must use
+" tab/s-tab)
+cmap <C-P> <Up>
+cmap <C-N> <Down>
+" Map co/ci (copy out/copy in) to copy to/from clipboard
+nnoremap co :execute 'sp ++bin' tempname()<CR>:setlocal noeol<CR>P<bar>:w !xclip -selection clipboard<CR><CR>:bd!<CR>
+nnoremap ci :execute 'sp' tempname()<CR>:0r !xclip -o<CR>gg<bar>yv/\%$<CR>:bd!<CR>P
 " Disable banner and enable tree listing for the built-in file manager
 let g:netrw_banner=0
 let g:netrw_liststyle=3
