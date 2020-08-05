@@ -64,6 +64,12 @@ cmap <C-N> <Down>
 " Map co/ci (copy out/copy in) to copy to/from clipboard
 nnoremap co :execute 'sp ++bin' tempname()<CR>:setlocal noeol<CR>P<bar>:w !xclip -selection clipboard<CR><CR>:bd!<CR>
 nnoremap ci :execute 'sp' tempname()<CR>:0r !xclip -o<CR>gg<bar>yv/\%$<CR>:bd!<CR>P
+" Map keys to navigate in command line
+cnoremap <C-H> <S-Left>
+cnoremap <C-J> <Left>
+cnoremap <C-K> <Right>
+cnoremap <C-L> <S-Right>
+cnoremap <C-x> <Del>
 " Disable banner and enable tree listing for the built-in file manager
 let g:netrw_banner=0
 let g:netrw_liststyle=3
