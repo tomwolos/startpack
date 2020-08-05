@@ -1,6 +1,11 @@
 ### TMUX ###
+Assuming prefix is ctrl-b.
+
 Create new window.
 ctrl-b c
+
+Enter copy mode.
+ctrl-b [
 
 % custom %
 Switch between windows.

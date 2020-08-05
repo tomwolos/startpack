@@ -221,6 +221,9 @@ ctrl-w H/J/K/L
 Execute command in each window (or range of windows), can contain | to concatenate commands.
 :[range]windo {cmd}
 
+Open command-line window (enter to execute command, ctrl-c to paste in command line).
+q:
+
 ### REGEXP ###
 The general expression is:
 :[range] regexp flags
