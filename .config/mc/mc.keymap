@@ -1,0 +1,16 @@
+[main]
+Quit=f10;q
+Copy=f5;y
+Delete=f8;d
+Edit=f4;i
+
+[panel]
+Up=up;k
+Down=down;j
+Enter=enter;right;l
+CdParent=left;h
+PageUp=pgup;ctrl-u
+PageDown=pgdn;ctrl-d
+Mark=m
+Search=ctrl-s;/
+PanelOtherSync=alt-i;ctrl-i
